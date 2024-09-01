@@ -23,7 +23,7 @@ function App() {
 
   return (
     <main>
-      <h1>Servgenie Roadmap</h1>
+      <h1>Servgenie 1.0</h1>
       <button onClick={createTodo}>+ new</button>
       <ul>
         {todos.map((todo) => (
