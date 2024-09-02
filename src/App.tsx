@@ -59,7 +59,7 @@ function App() {
           </li>
         ))}
       </ul>
-      <div>In the mean time, leave us your wishes. 🥳</div>
+      <div>In the mean time, leave us your wishes.</div>
     </main>
   );
 }
