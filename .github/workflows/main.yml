@@ -3,6 +3,12 @@ on:
   push:
     tags:
       - v*.**
+  workflow_dispatch:
+    inputs:
+        commit_hash:
+          description: 'Commit hash to release'
+          default: 'origin/main'
+          type: string
 jobs:
   deploy-production:
     permissions:
@@ -19,7 +25,7 @@ jobs:
             git fetch --unshallow
             git checkout release
             git pull
-            git merge --no-ff origin/main -m "Auto-merge main to release branch"
+            git merge --no-ff ${{GITHUB_SHA}} -m "Auto-merge main to release branch"
       - name: Deploy to Production (Amplify)
         run: |
             curl -X POST -d {} "${{ secrets.DEPLOYMENT_WEBHOOK_URL }}" -H "Content-Type:application/json"
