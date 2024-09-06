@@ -4,7 +4,7 @@ on:
     tags:
       - v*.**
 jobs:
-  deploy-production:
+  release-and-deploy-production:
     permissions:
       contents: write
     runs-on: ubuntu-latest
@@ -21,3 +21,6 @@ jobs:
             git pull
             git merge --no-ff ${GITHUB_SHA} -m "Merging commit ${GITHUB_SHA} from main: ${{ github.event.head_commit.message }}"
             git push
+      - name: Deploy to Production (Amplify)
+        run: |
+            curl -X POST -d {} "${{ secrets.DEPLOYMENT_WEBHOOK_URL }}" -H "Content-Type:application/json"
