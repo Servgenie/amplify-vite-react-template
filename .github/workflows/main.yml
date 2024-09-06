@@ -1,14 +1,8 @@
-name: Deploy to Production
+name: Release Tag to Production
 on:
   push:
     tags:
       - v*.**
-  workflow_dispatch:
-    inputs:
-        commit_hash:
-          description: 'Commit hash to release'
-          default: 'origin/main'
-          type: string
 jobs:
   deploy-production:
     permissions:
