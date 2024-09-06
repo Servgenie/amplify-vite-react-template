@@ -20,7 +20,7 @@ jobs:
             git fetch --unshallow
             git checkout release
             git pull
-            git merge --no-ff main -m "Auto-merge main to release branch"
+            git merge --no-ff origin/main -m "Auto-merge main to release branch"
       - name: Deploy to Production (Amplify)
         run: |
             curl -X POST -d {} "${{ secrets.DEPLOYMENT_WEBHOOK_URL }}" -H "Content-Type:application/json"
