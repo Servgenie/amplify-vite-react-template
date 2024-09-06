@@ -18,7 +18,7 @@ For detailed instructions on deploying your application, refer to the [deploymen
 
 ## Security
 
-See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information..
+See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information...
 
 ## License
 
