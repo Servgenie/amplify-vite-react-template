@@ -16,6 +16,7 @@ jobs:
             git config --local user.name "Github Actions"
       - name: Push tagged release to release branch
         run: |
+            git fetch --unshallow
             git checkout release
             git pull
             git merge --no-ff ${GITHUB_SHA} -m "Merging commit ${GITHUB_SHA} from main: ${{ github.event.head_commit.message }}"
