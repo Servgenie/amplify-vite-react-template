@@ -25,4 +25,5 @@ jobs:
             git merge --no-ff main -m "Auto-merge main to release branch"
             git push
       - name: Deploy to Production (Amplify)
-        run: curl -X POST -d {} "${{ secrets.DEPLOYMENT_WEBHOOK_URL }}" -H "Content-Type:application/json"
+        run: |
+            curl -X POST -d {} "${{ secrets.DEPLOYMENT_WEBHOOK_URL }}" -H "Content-Type:application/json"
