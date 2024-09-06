@@ -10,16 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Set git config
+      - name: Setup git config
         run: |
             git config --local user.email "actions@github.com"
             git config --local user.name "Github Actions"
-      - name: Merge main back to release
+      - name: Push tagged release to release branch
         run: |
             git fetch --unshallow
             git checkout release
             git pull
-            git merge --no-ff ${GITHUB_SHA} -m "Auto-merge main to release branch"
-      - name: Deploy to Production (Amplify)
-        run: |
-            curl -X POST -d {} "${{ secrets.DEPLOYMENT_WEBHOOK_URL }}" -H "Content-Type:application/json"
+            git merge --no-ff ${GITHUB_SHA} -m "Merging commit ${GITHUB_SHA} from main: ${{ github.event.head_commit.message }}"
+            git push
