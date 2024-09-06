@@ -1,0 +1,14 @@
+name: Deploy Release to Production
+on:
+  push:
+    branches:
+      - release
+jobs:
+  deploy-production:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to Production (Amplify)
+        run: |
+            curl -X POST -d {} "${{ secrets.DEPLOYMENT_WEBHOOK_URL }}" -H "Content-Type:application/json"
