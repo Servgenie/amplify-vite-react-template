@@ -1,8 +1,6 @@
 name: Deploy to Production
 on:
   push:
-    branches:
-      - main
     tags:
       - v*.**
   workflow_dispatch:
@@ -23,9 +21,6 @@ jobs:
             git checkout release
             git pull
             git merge --no-ff main -m "Auto-merge main to release branch"
-      - name: Release Drafter
-        uses: release-drafter/release-drafter@v6.0.0
-          git push
       - name: Deploy to Production (Amplify)
         run: |
             curl -X POST -d {} "${{ secrets.DEPLOYMENT_WEBHOOK_URL }}" -H "Content-Type:application/json"
