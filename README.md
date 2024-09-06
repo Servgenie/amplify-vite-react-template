@@ -9,7 +9,7 @@ This template equips you with a foundational React application integrated with A
 ## Features
 
 - **Authentication**: Setup with Amazon Cognito for secure user authentication.
-- **API**: Ready-to-use GraphQL endpoint with AWS AppSync.
+- **API**: Ready-to-use GraphQL endpoint with AWS AppSync..
 - **Database**: Real-time database powered by Amazon DynamoDB.
 
 ## Deploying to AWS
@@ -18,7 +18,7 @@ For detailed instructions on deploying your application, refer to the [deploymen
 
 ## Security
 
-See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information..
+See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information...
 
 ## License
 
