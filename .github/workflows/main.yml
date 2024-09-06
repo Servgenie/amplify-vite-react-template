@@ -1,0 +1,26 @@
+name: Deploy to Production
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - v*.**
+  workflow_dispatch:
+jobs:
+  deploy-production:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set Git config
+        run: |
+            git config --local user.email "actions@github.com"
+            git config --local user.name "Github Actions"
+      - name: Merge main back to release
+        run: |
+            git fetch --unshallow
+            git checkout release
+            git pull
+            git merge --no-ff main -m "Auto-merge main to release branch"
+            git push
+      - name: Deploy to Production (Amplify)
+        run: curl -X POST -d {} "${{ secrets.DEPLOYMENT_WEBHOOK_URL }}" -H "Content-Type:application/json"
