@@ -9,7 +9,7 @@ jobs:
       contents: write
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Setup git config
         run: |
             git config --local user.email "actions@github.com"
@@ -21,6 +21,3 @@ jobs:
             git pull
             git merge --no-ff ${GITHUB_SHA} -m "Merging commit ${GITHUB_SHA} from main: ${{ github.event.head_commit.message }}"
             git push
-      - name: Deploy to Production (Amplify)
-        run: |
-            curl -X POST -d {} "${{ secrets.DEPLOYMENT_WEBHOOK_URL }}" -H "Content-Type:application/json"
